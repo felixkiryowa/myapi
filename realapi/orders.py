@@ -3,9 +3,11 @@
 class Orders(object):
     """This is orders class"""
 
-    def __init__(self, order_id, item_name, quantity, price):
+    def __init__(self,order_id, order_items, order_status, user_id):
         """This is orders class constructor"""
         self.order_id = order_id
-        self.item_name = item_name
-        self.quantity = quantity
-        self.price = price
+        self.order_items = order_items
+        self.order_status = order_status
+        self.user_id = user_id
+        
+        

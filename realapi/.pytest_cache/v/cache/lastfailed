@@ -1,0 +1,8 @@
+{
+  "test_views.py::Tests::test_get_orders": true, 
+  "test_views.py::test_get_all_orders": true, 
+  "test_views.py::test_get_orders": true, 
+  "test_views.py::test_if_data_posted_is_in_form_of_json": true, 
+  "test_views.py::test_if_parameter_passed_value_does_not_exist": true, 
+  "test_views.py::test_update_specific_order": true
+}

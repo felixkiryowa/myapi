@@ -1,6 +1,6 @@
-from app import app
 from flask import jsonify
 from flask import request
+from app import app
 
 # Create some test data for our catalog in the form of a list of dictionaries.
 books = [
@@ -12,7 +12,9 @@ books = [
     {'id': 1,
      'title': 'The Ones Who Walk Away From Omelas',
      'author': 'Ursula K. Le Guin',
-     'first_sentence': 'With a clamor of bells that set the swallows soaring, the Festival of Summer came to the city Omelas, bright-towered by the sea.',
+     'first_sentence': 'With a clamor of bells that\
+      set the swallows soaring, the Festival of Summer\
+      came to the city Omelas, bright-towered by the sea.',
      'published': '1973'},
     {'id': 2,
      'title': 'Dhalgren',
@@ -25,10 +27,10 @@ def home():
     return '''<h1>Distant Reading Archive</h1>
               <p>A prototype API for distant reading of science fiction novels.</p>'''
 
-@app.route('/api/v1/resources/books/all',methods=['GET'])
+@app.route('/api/v1/resources/books/all', methods=['GET'])
 def get_all():
     return jsonify(books)
-# Loop through the data and match results that fit the requested ID.
+#Loop through the data and match results that fit the requested ID.
 # IDs are unique, but other fields might return many results
 @app.route('/api/v1/resources/books/<string:id>',methods=['GET'])
 def api_id(id):
@@ -45,9 +47,9 @@ def api_id(id):
     # Python dictionaries to the JSON format.
     return jsonify(results)
 #updating a list
-@app.route('/api/v1/resources/books/update/<string:id>',methods=['PUT'])
+@app.route('/api/v1/resources/books/update/<string:id>', methods=['PUT'])
 def update_book(id):
-    if(request.method == 'PUT'):
+    if (request.method == 'PUT'):
         if id:
             book_id = int(id)
         else:
@@ -64,14 +66,14 @@ def update_book(id):
 
 
 #Adding a book to the list
-@app.route('/api/v1/resources/books/add',methods=['POST'])
+@app.route('/api/v1/resources/books/add', methods=['POST'])
 def add_book():
     if (request.method == 'POST'):
         some_json = request.get_json()
         books.append(some_json)
         return jsonify(books)
 # Deleting a book
-@app.route('/api/v1/resources/books/delete/<string:id>',methods=['DELETE'])
+@app.route('/api/v1/resources/books/delete/<string:id>', methods=['DELETE'])
 def delete_book(id):
     if (request.method == 'DELETE'):
         if id:
